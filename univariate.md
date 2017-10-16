@@ -1,5 +1,21 @@
 # Univariate Analysis in Python
 
+```{.python .input}
+%%javascript
+IPython.OutputArea.prototype._should_scroll = function(lines) {
+    return false;
+}
+```
+
+```{.python .input}
+import warnings
+warnings.filterwarnings('ignore')
+```
+
+```{.python .input}
+%matplotlib inline
+```
+
 ```{.python .input  n=1}
 import pandas as pd
 import seaborn as sns
@@ -10,34 +26,35 @@ df = pd.read_csv('data/data.csv')
 ```
 
 ```{.python .input  n=3}
-df_quantitive = df.select_dtypes(exclude=['object'])
-df_quantitive.drop('Id', axis=1, inplace=True)
-df_qualitive = df.select_dtypes(include=['object'])
+quantitive = df.select_dtypes(exclude=['object']).drop('Id', axis=1).keys()
+qualitive = df.select_dtypes(include=['object']).keys()
 ```
 
-## Plotting All Quantitives Variables
+## Quantitives Variables
 
 ### Boxplot
 
 ```{.python .input  n=4}
-f = pd.melt(df_quantitive, value_vars=df_quantitive.keys())
+f = pd.melt(df, value_vars=quantitive)
 
-g = sns.FacetGrid(f, col="variable",  col_wrap=3, sharex=False, sharey=False)
+g = sns.FacetGrid(f, col="variable",  col_wrap=2, sharex=False, sharey=False, size=4)
 g.map(sns.boxplot, "value");
 ```
 
 ### Distplot
 
 ```{.python .input}
-g = sns.FacetGrid(f, col="variable",  col_wrap=3, sharex=False, sharey=False)
+g = sns.FacetGrid(f, col="variable",  col_wrap=2, sharex=False, sharey=False, size=4)
 g.map(sns.distplot, "value");
 ```
 
-## Plotting All Qualitive Variables (countplot)
+## Qualitive Variables
+
+### Countplot
 
 ```{.python .input  n=5}
-f = pd.melt(df_qualitive, value_vars=df_qualitive.keys())
+f = pd.melt(df, value_vars=qualitive)
 
-g = sns.FacetGrid(f, col="variable",  col_wrap=3, sharex=False, sharey=False)
+g = sns.FacetGrid(f, col="variable",  col_wrap=2, sharex=False, sharey=False, size=4)
 g.map(sns.countplot, "value");
 ```
