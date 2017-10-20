@@ -1,6 +1,11 @@
 # Bivariate Analysis in Python
 
 ```{.python .input}
+import warnings
+warnings.filterwarnings('ignore')
+```
+
+```{.python .input}
 %%javascript
 IPython.OutputArea.prototype._should_scroll = function(lines) {
     return false;
@@ -27,12 +32,11 @@ df = pd.read_csv('data/data.csv')
 ```
 
 ```{.python .input}
-C = df.select_dtypes(exclude=['object']).drop(['Id', 'SalePrice'], axis=1).keys()
+quantitive = df.select_dtypes(exclude=['object']).drop(['Id', 'SalePrice'], axis=1).keys()
 qualitive = df.select_dtypes(include=['object']).keys()
 ```
 
 ## Correlation Heatmap
-
 
 ```{.python .input  n=4}
 corr = df.corr()
