@@ -5,7 +5,7 @@
 
 ## Gaussian Naive Bayes
 
-### Advantages
+### Pros
 
    - Simple
    - Less training data is needed
@@ -14,7 +14,7 @@
    - With Naïve Bayes Classifier algorithm, it is easier to predict class of the test data set. A good bet for multi class predictions as well.
    - Though it requires conditional independence assumption, Naïve Bayes Classifier has presented good performance in various application domains.
 
-### Disadbantages
+### Cons
 
    - Problems when features are correlated
 
@@ -36,13 +36,24 @@
 ## Decision Trees
 
 
-### Advantages
+### Pros
 
-### Disadbantages
+   - Decision trees are very instinctual and can be explained to anyone with ease. People from a non-technical background, can also decipher the hypothesis drawn from a decision tree, as they are self-explanatory.
+   - When using decision tree machine learning algorithms, data type is not a constraint as they can handle both categorical and numerical variables.
+	- Decision tree machine learning algorithms do not require making any assumption on the linearity in the data and hence can be used in circumstances where the parameters are non-linearly related. These machine learning algorithms do not make any assumptions on the classifier structure and space distribution.
+	- These algorithms are useful in data exploration. Decision trees implicitly perform feature selection which is very important in predictive analytics. When a decision tree is fit to a training dataset, the nodes at the top on which the decision tree is split, are considered as important variables within a given dataset and feature selection is completed by default.
+	- Decision trees help save data preparation time, as they are not sensitive to missing values and outliers. Missing values will not stop you from splitting the data for building a decision tree. Outliers will also not affect the decision trees as data splitting happens based on some samples within the split range and not on exact absolute values.
 
-### Example)
+### Cons
+
+### Examples
 
 ### When to use
+
+   - Decision trees are robust to errors and if the training data contains errors- decision tree algorithms will be best suited to address such problems.
+   - Decision trees are best suited for problems where instances are represented by attribute value pairs.
+   - If the training data has missing value then decision trees can be used, as they can handle missing values nicely by looking at the data in other columns.
+   - Decision trees are best suited when the target function has discrete output values.
 
 
 
@@ -50,9 +61,9 @@
 
 
 
-### Advantages
+### Pros
 
-### Disadbantages
+### Cons
 
 ### Example)
 
@@ -63,9 +74,9 @@
 ## K-Nearest Neighbors 
 
 
-### Advantages
+### Pros
 
-### Disadbantages
+### Cons
 
 ### Example)
 
@@ -77,9 +88,9 @@
 
 
 
-### Advantages
+### Pros
 
-### Disadbantages
+### Cons
 
 ### Example)
 
@@ -90,14 +101,14 @@
 ## Support Vector Machines (SVM)
 
 
-### Advantages
+### Pros
 
    - SVM offers best classification performance (accuracy) on the training data.
    - SVM renders more efficiency for correct classification of the future data.
    - The best thing about SVM is that it does not make any strong assumptions on data.
    - It does not over-fit the data.
 
-### Disadbantages
+### Cons
 
 ### Examples
 
@@ -110,11 +121,11 @@ SVM is commonly used for stock market forecasting by various financial instituti
 ## Logistic Regression
 
 
-### Advantages
+### Pros
 
    - Fast, Simple
 
-### Disadbantages
+### Cons
 
 ### Example)
 
