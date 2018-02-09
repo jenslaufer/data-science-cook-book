@@ -1,0 +1,63 @@
+---
+title: "Cookbook Univariate Analysis"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+```{r warning=FALSE, message=FALSE}
+library(tidyverse)
+```
+
+```{r}
+df = read.csv('data/data.csv')
+```
+
+
+
+
+```{r}
+qualitative <- df[,sapply(df, is.factor)]
+quantitative <- df[,sapply(df, is.numeric)]
+```
+
+
+# Two Quantitatives
+
+## Overall picture for a dependent feature 
+
+```{r fig.height=30, fig.width=20, message=FALSE, warning=FALSE}
+quantitative %>%
+  gather(-Id, -SalePrice, key = 'var', value = 'val') %>%
+  ggplot(aes(x=SalePrice, y=val)) +
+    geom_point(aes()) +
+    facet_wrap(~var, scales = 'free', ncol=4)
+```
+
+# One quantitatives, one qualitatives
+
+### Overall picture
+
+
+```{r fig.height=30, fig.width=20, message=FALSE, warning=FALSE}
+qualitative %>%
+  mutate(SalePrice = df$SalePrice) %>%
+  gather(-SalePrice, key = 'var', value = 'val') %>%
+  ggplot(aes(x=val, y=SalePrice)) +
+    geom_boxplot() +
+    facet_wrap(~var, scales = 'free', ncol=4)
+```
+
+# Two Qualitatives
+
+## Overall picture for a dependent feature 
+
+```{r fig.height=10, fig.width=20, message=FALSE, warning=FALSE}
+qualitative %>%
+  select(BldgType, Condition1, Condition2, HouseStyle) %>%
+  gather(-HouseStyle,key = 'var', value = 'val') %>%
+  ggplot(aes(x=HouseStyle, y=val)) +
+    geom_bar(stat = 'identity') +
+    facet_wrap(~var, scales = 'free', ncol=4)
+```

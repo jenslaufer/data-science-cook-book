@@ -3,9 +3,10 @@ title: "Cookbook Univariate Analysis"
 output:
   html_document:
     df_print: paged
+  pdf_document: default
 ---
 
-```{r warning=FALSE}
+```{r warning=FALSE, message=FALSE}
 library(tidyverse)
 ```
 
@@ -13,29 +14,17 @@ library(tidyverse)
 df = read.csv('data/data.csv')
 ```
 
-```{r}
-str(df)
-```
+
 ```{r}
 qualitative <- df[,sapply(df, is.factor)]
 quantitative <- df[,sapply(df, is.numeric)]
 ```
 
 
-#Quantitativ
-```{r fig.width=20, warning=}
-quantitative %>%
-  gather(-Id, key='var', value='val') %>%
-  ggplot(aes(x=val)) +
-  geom_histogram() +
-  facet_wrap(~var, scales = 'free')
-```
-
-
 #Qualitative
 
 ## Overall picture
-```{r fig.width=20, warning=FALSE}
+```{r warning=FALSE, message=FALSE, fig.height=10, fig.width=20}
 qualitative %>%
   gather(key='var', value='val') %>%
   ggplot(aes(x=val)) +
@@ -45,7 +34,7 @@ qualitative %>%
 
 ## One variable
 
-```{r message=FALSE}
+```{r warning=FALSE, message=FALSE}
 df %>%
   ggplot(aes(x=BsmtExposure)) +
   geom_bar()
@@ -61,7 +50,7 @@ df %>%
 
 
 ##Overall picture
-```{r fig.width=20, warning=FALSE}
+```{r warning=FALSE, message=FALSE, fig.height=10, fig.width=20}
 quantitative %>%
   gather(-Id, key='var', value='val') %>%
   ggplot(aes(x=val)) +
@@ -80,7 +69,7 @@ quantitative %>%
 
 ## One variable
 
-```{r message=FALSE}
+```{r warning=FALSE, message=FALSE}
 df %>%
   ggplot(aes(x=SalePrice)) +
   geom_histogram()
@@ -88,7 +77,7 @@ df %>%
 ```
 
 
-```{r message=FALSE}
+```{r warning=FALSE, message=FALSE}
 df %>%
   ggplot(aes(x=SalePrice)) +
   geom_freqpoly()

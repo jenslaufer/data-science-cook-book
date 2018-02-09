@@ -15,16 +15,17 @@ df = read.csv('data/data.csv')
 
 #Empty value visualization
 
-```{r warning=FALSE}
+```{r fig.height=10, fig.width=20, warning=FALSE}
 df %>% 
  mutate(id=row_number()) %>%
  gather(-id, key = "key", value = "val") %>%
  mutate(isna = is.na(val)) %>%
  ggplot(aes(key, id, fill=isna)) + 
-    geom_raster() + 
+    geom_raster(alpha=0.8) + 
     scale_fill_grey(name="", labels=c("Present", "Missing")) +
     theme_minimal() + 
     theme(axis.text.x  = element_text(angle=45, vjust=0.5)) + 
     labs(x = "Variables in Dataset",
-         y = "Rows / observations")
+         y = "Rows / observations") +
+  coord_flip()
 ```
