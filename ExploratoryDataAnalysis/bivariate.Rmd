@@ -66,59 +66,13 @@ qualitative %>%
 ## Overall picture for a dependent feature 
 
 
-
-
-```{r fig.height=10, fig.width=20, message=FALSE, warning=FALSE}
-qualitative %>%
-  select(BldgType, Condition1, Condition2, HouseStyle) %>%
-  gather(-HouseStyle,key = 'var', value = 'val') %>%
-  count(HouseStyle, var, val) %>%
-  ggplot(aes(x=HouseStyle, y=n)) +
-    geom_bar(stat = 'identity') +
-    facet_wrap(~var, scales = 'free', ncol=4)
-```
-
-
-
-```{r fig.height=10, fig.width=20, message=FALSE, warning=FALSE}
-qualitative %>%
-  select(BldgType, Condition1, Condition2, HouseStyle) %>%
-  gather(-HouseStyle,key = 'var', value = 'val') %>%
-  count(HouseStyle, var, val) %>%
-  ggplot(aes(x=HouseStyle, y=val)) +
-    geom_tile(aes(fill=n)) +
-    facet_wrap(~var, scales = 'free', ncol=4)
-```
-
-
-
-
-```{r}
-df %>%
-  count(HouseStyle, Condition1) %>%
-  ggplot(aes(x=HouseStyle, y=Condition1)) +
-    geom_tile(aes(fill=n))
-```
-
-
-
-```{r}
-df %>%
-  count(HouseStyle, Condition1) %>%
-  ggplot(aes(x=HouseStyle, y=n)) + 
-    geom_bar(aes(fill = Condition1), stat ='identity', position = "dodge")
-```
-
-
-
-
 ```{r fig.height=10, fig.width=20, message=FALSE, warning=FALSE}
 
 qualitative %>%
-  select(BldgType, Condition1, Condition2, HouseStyle) %>%
-  gather(-HouseStyle,key = 'var', value = 'val') %>%
-  count(HouseStyle, var, val) %>%
-  ggplot(aes(x=HouseStyle, y=n)) + 
-    geom_bar(aes(fill = val), stat ='identity', position = "dodge") +
+  select(BldgType, Condition1, HouseStyle) %>%
+  gather(-Condition1,key = 'var', value = 'val') %>%
+  count(Condition1, var, val) %>%
+  ggplot(aes(x=val, y=n)) + 
+    geom_bar(aes(fill = Condition1), stat ='identity') +
     facet_wrap(~var, scales = 'free', ncol=4)
 ```
